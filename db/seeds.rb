@@ -1,7 +1,12 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+if Book.count == 0
+  Book.create title: "Ulysses", photo_url: "ulysses.jpg", price: 26.00, author_id: 1
+  Book.create title: "A Portrait of the Artist as a Young Man", photo_url: "portrait-of-the-artist.jpg", price: 2.99, author_id: 1
+  Book.create title: "Slaughterhouse-Five", photo_url: "slaughterhouse-five.jpg", price: 7.99, author_id: 2
+  Book.create title: "Invisible Man", photo_url: "invisible-man.jpg", price: 21.00, author_id: 3
+end
+
+if Author.count == 0
+  Author.create first_name: "James", last_name: "Joyce", bio: "James Joyce, the twentieth century’s most influential novelist, was born in Dublin on February 2, 1882. The oldest of ten children, he grew up in a family that went from prosperity to penury because of his father’s wastrel behavior. After receiving a rigorous Jesuit education, twenty-year-old Joyce renounced his Catholicism and left Dublin in 1902 to spend most of his life as a writer in exile in Paris, Trieste, Rome, and Zurich. On one trip back to Ireland, he fell in love with the now famous Nora Barnacle on June 16, the day he later chose as “Bloomsday” in his novel Ulysses. Nara was an uneducated Galway girl who became his lifelong companion an the mother of his two children. In debt and drinking heavily, Joyce lived for thirty-six years on the Continent, supporting himself first by teaching jobs, then trough the patronage of Mrs. Harold McCormick (Edith Rockerfeller) and the English feminist and editor Harriet Shaw Weaver. His writings include Chamber Music (1907), Dubliners (1914), A Portrait of the Artist as a Young Man (1916), Exiles (1918), Ulysses (1922), Pomes Penyeach (1927), Finnegan’s Wake (1939), and an early draft of A Portrait of a Young Man, Stephan Hero (1944). Ulysses required seven years to complete, and his masterpiece, Finnegan’s Wake, took seventeen. Both works revolutionized the form, structure, and content of the novel. Joyce died in Zurich in 1941."
+  Author.create first_name: "Kurt", last_name: "Vonnegut", bio: "Kurt Vonnegut was a master of contemporary American literature. His black humor, satiric voice, and incomparable imagination first captured America’s attention in The Sirens of Titan in 1959 and established him, in the words of The New York Times, as “a true artist” with the publication of Cat’s Cradle in 1963. He was, as Graham Greene declared, “one of the best living American writers.” Mr. Vonnegut passed away in April 2007."
+  Author.create first_name: "Ralph", last_name: "Ellison", bio: "Ralph Ellison (1914–94) was born in Oklahoma and trained as a musician at Tuskegee Institute from 1933 to 1936, at which time a visit to New York and a meeting with Richard Wright led to his first attempts at fiction. Invisible Man won the National Book Award. Appointed to the Academy of American Arts and Letters in 1964, Ellison taught at several institutions, including Bard College, the University of Chicago, and New York University, where he was Albert Schweitzer Professor of Humanities."
+end
