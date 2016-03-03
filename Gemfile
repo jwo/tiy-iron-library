@@ -46,6 +46,8 @@ group :development do
   gem 'spring'
 end
 
+gem 'mechanize', '~> 2.7', '>= 2.7.4'
+
 group :production do
   gem 'rails_12factor'
 end
