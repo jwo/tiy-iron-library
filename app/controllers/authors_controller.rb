@@ -35,7 +35,7 @@ class AuthorsController < ApplicationController
     @author.bio = params[:author][:bio]
 
     if @author.save
-      redirect_to edit_author_path
+      redirect_to author_path
     else
       render :edit
     end

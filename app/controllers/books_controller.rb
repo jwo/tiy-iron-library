@@ -37,7 +37,7 @@ class BooksController < ApplicationController
     @book.author_id = params[:book][:author_id]
 
     if @book.save
-      redirect_to edit_book_path
+      redirect_to book_path
     else
       render :edit
     end
