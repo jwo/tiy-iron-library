@@ -1,0 +1,45 @@
+<% if @book.errors.any? %>
+  <%= pluralize(@book.errors.count, 'error') %> prevented your form from success.
+  <ul class="mdl-list">
+    <% @book.errors.full_messages.each do |msg| %>
+      <li class="mdl-list__item"><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for @book do |f| %>
+
+<div class="mdl-textfield mdl-js-textfield">
+  <%= f.text_field :title, class: "mdl-textfield__input" %>
+  <% if @book.errors[:title].any? %>
+    <span class="error-text">* <%= @book.errors[:name].join(", ") %> </span>
+  <% end %>
+  <%= f.label :title, class: "mdl-textfield__label" %>
+</div>
+
+<div class="mdl-textfield mdl-js-textfield">
+  <%= f.text_field :price, class: "mdl-textfield__input" %>
+  <% if @book.errors[:price].any? %>
+    <span class="error-text">* <%= @book.errors[:name].join(", ") %> </span>
+  <% end %>
+  <%= f.label :price, class: "mdl-textfield__label" %>
+</div>
+
+<div class="mdl-textfield mdl-js-textfield">
+  <%= f.text_field :photo_url, class: "mdl-textfield__input" %>
+  <% if @book.errors[:photo_url].any? %>
+    <span class="error-text">* <%= @book.errors[:photo_url].join(", ") %> </span>
+  <% end %>
+  <%= f.label :photo_url, class: "mdl-textfield__label" %>
+</div>
+
+<div class="mdl-textfield mdl-js-textfield">
+  <%= f.label :author, {class: "mdl-selectfield__select", style: "color: #BDBDBD;"} %>
+  <%= f.collection_select :author_id, Author.all, :id, :full_name, {prompt: true}, {class: "option"}%>
+</div>
+
+<div>
+  <%= f.submit class: "mdl-button mdl-js-button mdl-button--raised mdl-button--colored" %>
+</div>
+
+<% end %>
