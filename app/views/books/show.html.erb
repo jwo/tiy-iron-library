@@ -1,6 +1,11 @@
 <div class="demo-card mdl-grid">
   <div class="demo-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--6-col">
-    <h1><%= @book.title %></h1>
+    <h1>
+      <%= link_to edit_book_path(id: @book.id), class: "mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored" do %>
+        <i class="material-icons">edit</i>
+      <% end %>
+      <%= @book.title %>
+    </h1>
     <h1>
       <%= image_tag @book.photo_url %>
       <small style="padding-left: 50px;"><%= number_to_currency(@book.price) %></small>

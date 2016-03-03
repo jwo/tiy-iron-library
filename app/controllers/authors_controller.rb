@@ -4,7 +4,7 @@ class AuthorsController < ApplicationController
   end
 
   def show
-    @author = author.find_by id: params[:id]
+    @author = Author.find_by id: params[:id]
   end
 
   def new

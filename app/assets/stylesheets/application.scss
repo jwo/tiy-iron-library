@@ -1,3 +1,5 @@
+@import 'books';
+@import 'authors';
 
 .demo-ribbon {
   width: 100%;
@@ -46,11 +48,7 @@
 .demo-footer .mdl-mini-footer--link-list a {
   font-size: 13px;
 }
-.demo-card-square.mdl-card {
-  width: 320px;
-  height: 540px;
-  margin: 20px;
-}
+
 .recipe-list {
   display: flex;
   h2 {
@@ -65,21 +63,6 @@
 }
 .add-button {
   padding: 0 20px 0 0;
-}
-
-.item-list {
-  display: flex;
-  .card-square {
-    width: 320px;
-    height: 320px;
-    margin: 20px;
-
-    .mdl-card__title-text {
-      background: rgba(#111111, 0.6);
-      color: #eeeeee;
-      padding: 2px 12px;
-    }
-  }
 }
 .error-text {
   color: #F44235;
