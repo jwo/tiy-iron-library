@@ -2,6 +2,7 @@
 
 This application acts as a library storing books and authors. Users have the ability to add, edit, and delete both books and authors.
 The application is styled with Material Design Lite
+![Alt text](/screenshots/iron-library-initial.gif?raw=true)
 
 ### Root
 The root url displays all of the books that are 'housed in the library'
