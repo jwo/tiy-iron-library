@@ -15,9 +15,17 @@ task :scrape => :environment do
     next if amazon_book.search('.zg_itemImageImmersion a')[0].blank?
 
     the_url = amazon_book.search('.zg_itemImageImmersion a')[0]["href"]
-    puts the_url
+
     mechanize = Mechanize.new
-    amazon_individual_page = mechanize.get("#{the_url}")
+    begin
+      amazon_individual_page = mechanize.get("#{the_url}")
+    rescue Mechanize::ResponseCodeError => exception
+      if exception.response_code.nil?
+        puts "I work"
+      else
+        next
+      end
+    end
 
     the_title = amazon_individual_page.search('.feature .a-size-large .a-size-large').text.strip
     book = Book.where(title: the_title).first_or_initialize
@@ -35,17 +43,12 @@ task :scrape => :environment do
     book.author.first_name = the_author_first_name
     book.author.last_name = the_author_last_name
     book.author.bio = "* add a bio for me!"
-    puts the_author
     book.author.save
-    puts "The author saved" if book.author.save
     book.author = book.author
 
     book.save
-    puts "The book saved" if book.save
-
 
   end
-
 
   new_book_count = Book.count
   if new_book_count - original_book_count > 0
