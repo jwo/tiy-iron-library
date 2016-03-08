@@ -1,8 +1,8 @@
 if Book.count == 0
-  Book.create title: "Ulysses", photo_url: "ulysses.jpg", price: 26.00, author_id: 1
-  Book.create title: "A Portrait of the Artist as a Young Man", photo_url: "portrait-of-the-artist.jpg", price: 2.99, author_id: 1
-  Book.create title: "Slaughterhouse-Five", photo_url: "slaughterhouse-five.jpg", price: 7.99, author_id: 2
-  Book.create title: "Invisible Man", photo_url: "invisible-man.jpg", price: 21.00, author_id: 3
+  Book.create title: "Ulysses", photo_url: "http://ecx.images-amazon.com/images/I/51yXIymgmwL.jpg", price: 26.00, author_id: 1
+  Book.create title: "A Portrait of the Artist as a Young Man", photo_url: "http://ecx.images-amazon.com/images/I/51zL6QEMp5L.jpg", price: 2.99, author_id: 1
+  Book.create title: "Slaughterhouse-Five", photo_url: "http://ecx.images-amazon.com/images/I/4120yizU-2L.jpg", price: 7.99, author_id: 2
+  Book.create title: "Invisible Man", photo_url: "http://ecx.images-amazon.com/images/I/51LU-4hu%2BIL._SX322_BO1,204,203,200_.jpg", price: 21.00, author_id: 3
 end
 
 if Author.count == 0
