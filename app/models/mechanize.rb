@@ -25,8 +25,13 @@ page.search('.zg_price .price').each do |price|
 end
 puts prices
 
-# photo_urls = []
-# page.search('.zg_itemImageImmersion img').each do |photo_url|
-#   photo_urls << photo_url.text.strip
-# end
-# puts photo_urls
+photo_urls = []
+page.search('.zg_itemImageImmersion').each do |photo_url|
+  photo_urls << photo_url.text.strip
+end
+puts photo_urls
+
+titles.each.with_index do |record, index|
+
+
+end
