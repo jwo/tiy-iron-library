@@ -21,7 +21,6 @@ task :scrape => :environment do
       amazon_individual_page = mechanize.get("#{the_url}")
     rescue Mechanize::ResponseCodeError => exception
       if exception.response_code.nil?
-        puts "I work"
       else
         next
       end
