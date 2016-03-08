@@ -34,7 +34,7 @@
 </div>
 
 <div class="mdl-textfield mdl-js-textfield">
-  <%= f.label :author, {class: "mdl-selectfield__select", style: "color: #BDBDBD;"} %>
+  <%= f.label :author_id, {class: "mdl-selectfield__select", style: "color: #BDBDBD;"} %>
   <%= f.collection_select :author_id, Author.all, :id, :full_name, {prompt: true}, {class: "option"}%>
 </div>
 
