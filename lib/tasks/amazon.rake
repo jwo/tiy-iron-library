@@ -19,11 +19,13 @@ task :scrape => :environment do
     mechanize = Mechanize.new
     amazon_individual_page = mechanize.get("#{the_url}")
 
-    the_title = amazon_individual_page.search('.feature .a-size-large').text.strip
+    the_title = amazon_individual_page.search('.feature .a-size-large .a-size-large').text.strip
     book = Book.where(title: the_title).first_or_initialize
     book.title = the_title
     book.price = amazon_book.search('.zg_price .price').text.split('$')[1].to_s.to_f
-    book.photo_url = amazon_individual_page.search('.maintain-height img')[0]["src"].to_s
+    book.photo_url = amazon_individual_page.search('.maintain-height img')[0]["data-a-dynamic-image"].to_s
+    book.photo_url = book.photo_url.split('{"')[1].to_s
+    book.photo_url = book.photo_url.split('"')[0].to_s
 
     the_author = amazon_book.search('.zg_byline').text.strip
     the_author = the_author.split('by ')[1].to_s
