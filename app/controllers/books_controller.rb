@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  before_action do
+  before_action except: [:index] do
     @current_user = User.find_by id: session[:user_id]
     if @current_user.blank?
       redirect_to sign_in_path
