@@ -6,7 +6,7 @@ class CanSignInTest < Capybara::Rails::TestCase
   end
   test "Can sign in" do
     visit root_path
-    click_link "All Recipes"
+    click_link "Books"
     fill_in "Email", with: "bob@example.com"
     fill_in "Password", with: "12345678"
     click_button "Sign In"
