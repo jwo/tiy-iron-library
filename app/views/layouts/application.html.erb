@@ -33,6 +33,9 @@
               <label class="mdl-textfield__label" for="search">Enter your query...</label>
             </div>
           </div>
+          <% if @current_user %>
+            Hello <%= @current_user.name %>!
+          <% end %>
         </div>
       </header>
 
