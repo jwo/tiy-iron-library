@@ -6,7 +6,7 @@ class SessionController < ApplicationController
     email = params[:email]
     password =  params[:password]
     @user = User.find_by email: email
-    if @user.password == password
+    if @user.password && @user.password == password
       session[:user_id] = @user.id
       redirect_to root_path
     else
