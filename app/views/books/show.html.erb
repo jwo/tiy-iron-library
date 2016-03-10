@@ -7,7 +7,7 @@
       <%= @book.title %>
     </h1>
     <h1>
-      <%= image_tag @book.photo_url %>
+      <%= image_tag @book.photo_url, style:"width: 60%" %>
       <small style="padding-left: 50px;"><%= number_to_currency(@book.price) %></small>
     </h1>
 
