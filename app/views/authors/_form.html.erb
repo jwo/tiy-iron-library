@@ -33,6 +33,14 @@
   <%= f.label :bio, class: "mdl-textfield__label" %>
 </div>
 
+<div class="mdl-textfield mdl-js-textfield">
+  <%= f.text_field :photo_url, class: "mdl-textfield__input" %>
+  <% if @book.errors[:photo_url].any? %>
+    <span class="error-text">* <%= @book.errors[:photo_url].join(", ") %> </span>
+  <% end %>
+  <%= f.label :photo_url, class: "mdl-textfield__label" %>
+</div>
+
 <div>
   <%= f.submit class: "mdl-button mdl-js-button mdl-button--raised mdl-button--colored" %>
 </div>

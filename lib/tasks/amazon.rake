@@ -38,7 +38,7 @@ task :scrape => :environment do
     the_author = the_author.split('by ')[1].to_s
     the_author_first_name = the_author.split(' ')[0].to_s
     the_author_last_name = the_author.split(' ')[1].to_s
-    book.author = Author.where("last_name = ? AND first_name = ?", the_author_first_name, the_author_last_name).first_or_initialize
+    book.author = Author.where("last_name = ? AND first_name = ?", the_author_last_name, the_author_first_name).first_or_initialize
     book.author.first_name = the_author_first_name
     book.author.last_name = the_author_last_name
     book.author.bio = "* add a bio for me!"
