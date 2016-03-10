@@ -50,6 +50,7 @@ group :development do
 end
 
 gem 'mechanize', '~> 2.7', '>= 2.7.4'
+gem 'rails-erd'
 
 group :production do
   gem 'rails_12factor'
