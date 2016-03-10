@@ -6,13 +6,13 @@
       <%= form_tag do %>
 
         <div class="mdl-textfield mdl-js-textfield">
-          <input class="mdl-textfield__input" type="text" id="email"/>
-          <label class="mdl-textfield__label" for="username"><%= "Email" %></label>
+          <%= label_tag :email %>
+          <%= email_field_tag :email %>
         </div>
 
         <div class="mdl-textfield mdl-js-textfield">
-          <input class="mdl-textfield__input" type="password" id="password"/>
-          <label class="mdl-textfield__label" for="username"><%= "Password" %></label>
+          <%= label_tag :password %>
+          <%= password_field_tag :password %>
         </div>
 
         <div>
