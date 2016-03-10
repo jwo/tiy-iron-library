@@ -42,6 +42,7 @@ task :scrape => :environment do
     book.author.first_name = the_author_first_name
     book.author.last_name = the_author_last_name
     book.author.bio = "* add a bio for me!"
+    book.author.photo_url = "http://m5.paperblog.com/i/85/859662/where-did-my-profile-picture-go-in-google-sea-L-Mi3h8N.png"
     book.author.save
     book.author = book.author
 
