@@ -1,0 +1,41 @@
+<div class="demo-container mdl-grid">
+  <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
+  <div class="demo-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
+      <h1>Sign Up</h1>
+
+      <% if @user.errors.any? %>
+        <%= pluralize(@user.errors.count, 'error') %> prevented your form from success.
+        <ul class="mdl-list">
+          <% @user.errors.full_messages.each do |msg| %>
+            <li class="mdl-list__item"><%= msg %></li>
+          <% end %>
+        </ul>
+      <% end %>
+
+      <%= form_for @user do |f| %>
+
+        <div class="mdl-textfield mdl-js-textfield">
+          <%= f.label :email, class: "mdl-textfield__label" %>
+          <%= f.email_field :email, class: "mdl-textfield__input" %>
+        </div>
+
+        <div class="mdl-textfield mdl-js-textfield">
+          <%= f.label :name, class: "mdl-textfield__label" %>
+          <%= f.text_field :name, class: "mdl-textfield__input" %>
+        </div>
+
+        <div class="mdl-textfield mdl-js-textfield">
+          <%= f.label :password, class: "mdl-textfield__label" %>
+          <%= f.password_field :password, class: "mdl-textfield__input" %>
+        </div>
+
+        <div>
+          <%= f.submit class: "mdl-button mdl-js-button mdl-button--raised mdl-button--colored" %>
+          or
+          <%= link_to 'Sign In', sign_in_path %>
+        </div>
+
+      <% end %>
+  </div>
+
+</div>

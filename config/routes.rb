@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  get 'sign_in' => 'session#new', as: :sign_in
+  post 'sign_in' => 'session#create'
+  get 'sign_out' => 'session#delete', as: :sign_out
+
+  get 'sign_up' => 'user#new', as: :new_user
+  post 'sign_up' => 'user#create', as: :users
+
   root 'books#index'
   get 'books/new' => 'books#new', as: :new_book
   get 'books/:id' => 'books#show', as: :book

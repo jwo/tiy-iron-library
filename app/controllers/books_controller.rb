@@ -1,5 +1,17 @@
 class BooksController < ApplicationController
+  before_action except: [:index] do
+    @current_user = User.find_by id: session[:user_id]
+    if @current_user.blank?
+      redirect_to sign_in_path
+    end
+  end
+
   def index
+    user_id = session[:user_id]
+    if user_id.present?
+      @current_user = User.find_by id: user_id
+    end
+
     @books = Book.all.order("title asc")
   end
 
