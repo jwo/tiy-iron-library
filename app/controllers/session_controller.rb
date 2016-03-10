@@ -10,7 +10,7 @@ class SessionController < ApplicationController
       render :new
     elsif @user.password == password
       session[:user_id] = @user.id
-      redirect_to root_path
+      redirect_back_or_default root_path
     else
       render :new
     end
