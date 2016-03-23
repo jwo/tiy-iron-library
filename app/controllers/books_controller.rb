@@ -8,11 +8,6 @@ class BooksController < ApplicationController
   end
 
   def index
-    user_id = session[:user_id]
-    if user_id.present?
-      @current_user = User.find_by id: user_id
-    end
-
     @books = Book.all.order("title asc")
   end
 
@@ -25,11 +20,7 @@ class BooksController < ApplicationController
   end
 
   def create
-    @book = Book.new
-    @book.title = params[:book][:title]
-    @book.photo_url = params[:book][:photo_url]
-    @book.price = params[:book][:price]
-    @book.author_id = params[:book][:author_id]
+    @book = Book.new book_params
 
     if @book.save
       redirect_to root_path
@@ -44,13 +35,9 @@ class BooksController < ApplicationController
 
   def update
     @book = Book.find_by id: params[:id]
-    @book.title = params[:book][:title]
-    @book.photo_url = params[:book][:photo_url]
-    @book.price = params[:book][:price]
-    @book.author_id = params[:book][:author_id]
 
-    if @book.save
-      redirect_to book_path
+    if @book.update book_params
+      redirect_to book_path(id: @book.id)
     else
       render :edit
     end
@@ -60,5 +47,9 @@ class BooksController < ApplicationController
     @book = Book.find_by id: params[:id]
     @book.destroy
     redirect_to root_path
+  end
+
+  def book_params
+    params.require(:book).permit(:title, :photo, :price, :author_id)
   end
 end

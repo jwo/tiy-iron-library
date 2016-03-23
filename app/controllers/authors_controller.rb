@@ -8,7 +8,7 @@ class AuthorsController < ApplicationController
   end
 
   def index
-    @authors = Author.all
+    @authors = Author.all.order("last_name asc")
   end
 
   def show
@@ -20,10 +20,7 @@ class AuthorsController < ApplicationController
   end
 
   def create
-    @author = Author.new
-    @author.first_name = params[:author][:first_name]
-    @author.last_name = params[:author][:last_name]
-    @author.bio = params[:author][:bio]
+    @author = Author.new author_params
 
     if @author.save
       redirect_to authors_path
@@ -38,11 +35,8 @@ class AuthorsController < ApplicationController
 
   def update
     @author = Author.new
-    @author.first_name = params[:author][:first_name]
-    @author.last_name = params[:author][:last_name]
-    @author.bio = params[:author][:bio]
 
-    if @author.save
+    if @author.update author_params
       redirect_to author_path
     else
       render :edit
@@ -53,5 +47,9 @@ class AuthorsController < ApplicationController
     @author = Author.find_by id: params[:id]
     @author.destroy
     redirect_to authors_path
+  end
+
+  def author_params
+    params.require(:author).permit(:first_name, :last_name, :bio, :photo)
   end
 end

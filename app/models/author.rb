@@ -1,5 +1,5 @@
 class Author < ActiveRecord::Base
-  has_many :books
+  has_many :books, dependent: :destroy
   validates :first_name, :last_name, :bio, presence: true
 
   attachment :photo

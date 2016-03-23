@@ -33,12 +33,12 @@
   <%= f.label :bio, class: "mdl-textfield__label" %>
 </div>
 
-<div class="mdl-textfield mdl-js-textfield">
-  <%= f.text_field :photo_url, class: "mdl-textfield__input" %>
-  <% if @author.errors[:photo_url].any? %>
-    <span class="error-text">* <%= @author.errors[:photo_url].join(", ") %> </span>
+<div class="">
+  <%= f.label :photo, {class: "mdl-selectfield__select", style: "color: #BDBDBD;"}%>
+  <%= f.attachment_field :photo, class: "" %>
+  <% if @author.errors[:photo].any? %>
+    <span class="mdl-textfield__error">* <%= @author.errors[:photo].join(", ") %> </span>
   <% end %>
-  <%= f.label :photo_url, class: "mdl-textfield__label" %>
 </div>
 
 <div>

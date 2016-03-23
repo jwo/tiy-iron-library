@@ -24,7 +24,7 @@ class AddBookTest < Capybara::Rails::TestCase
     within("#new_book") do
       fill_in "Title", with: "I'm a New Book"
       fill_in "Price", with: "4.99"
-      fill_in "Photo url", with: "http://ecx.images-amazon.com/images/I/51RN2Q74BYL._SX334_BO1,204,203,200_.jpg"
+      attach_file('Photo', "#{Rails.root}/test/fixtures/kitty.jpg")
       select("William Shakespeare", from: "Author")
       click_button "Create Book"
     end
