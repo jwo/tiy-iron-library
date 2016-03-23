@@ -1,7 +1,7 @@
 # Rails: Moving into Advanced
 ## Intro to Testing - Feature (end to end) testing
 ##### Due Wednesday, March 09, 2016  
-###### Testing is way super important in creating maintainable applications -- that is, applications that don't seem to break every time you use them.
+Testing is way super important in creating maintainable applications -- that is, applications that don't seem to break every time you use them.
 
 Rails and Ruby have testing built in; you'll create a Rails app that tests itself.
 
