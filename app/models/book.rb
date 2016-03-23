@@ -5,4 +5,6 @@ class Book < ActiveRecord::Base
   validates_numericality_of :price, :greater_than => 0, :less_than => 1000
   validates_format_of :price, :with => /\A\d+(?:\.\d{0,2})?\z/
 
+  attachment :photo
+
 end

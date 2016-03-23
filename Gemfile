@@ -49,9 +49,12 @@ group :development do
   gem 'spring'
 end
 
-gem 'mechanize', '~> 2.7', '>= 2.7.4'
-gem 'rails-erd'
-
 group :production do
   gem 'rails_12factor'
 end
+
+gem 'mechanize', '~> 2.7', '>= 2.7.4'
+gem 'rails-erd'
+gem "refile", require: "refile/rails"
+gem "refile-mini_magick"
+gem 'refile-postgres'

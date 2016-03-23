@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160323214832) do
+ActiveRecord::Schema.define(version: 20160323220357) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,17 +22,23 @@ ActiveRecord::Schema.define(version: 20160323214832) do
     t.text     "bio"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "photo_url"
+    t.string   "photo_id"
   end
 
   create_table "books", force: :cascade do |t|
     t.string   "title"
-    t.string   "photo_url"
     t.float    "price"
     t.integer  "author_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "photo_id"
   end
+
+  create_table "refile_attachments", force: :cascade do |t|
+    t.string "namespace", null: false
+  end
+
+  add_index "refile_attachments", ["namespace"], name: "index_refile_attachments_on_namespace", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
