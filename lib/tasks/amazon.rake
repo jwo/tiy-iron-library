@@ -5,6 +5,7 @@ task :scrape => :environment do
 
   require 'rubygems'
   require 'mechanize'
+  require 'open-uri'
 
   agent = Mechanize.new
 
@@ -30,9 +31,12 @@ task :scrape => :environment do
     book = Book.where(title: the_title).first_or_initialize
     book.title = the_title
     book.price = amazon_book.search('.zg_price .price').text.split('$')[1].to_s.to_f
-    book.photo_url = amazon_individual_page.search('.maintain-height img')[0]["data-a-dynamic-image"].to_s
-    book.photo_url = book.photo_url.split('{"')[1].to_s
-    book.photo_url = book.photo_url.split('"')[0].to_s
+    photo_url = amazon_individual_page.search('.maintain-height img')[0]["data-a-dynamic-image"].to_s
+    photo_url =photo_url.split('{"')[1].to_s
+    photo_url = photo_url.split('"')[0].to_s
+    open(photo_url, "rb") do |file|
+      book.photo = file
+    end
 
     the_author = amazon_book.search('.zg_byline').text.strip
     the_author = the_author.split('by ')[1].to_s
@@ -42,7 +46,10 @@ task :scrape => :environment do
     book.author.first_name = the_author_first_name
     book.author.last_name = the_author_last_name
     book.author.bio = "* add a bio for me!"
-    book.author.photo_url = "http://m5.paperblog.com/i/85/859662/where-did-my-profile-picture-go-in-google-sea-L-Mi3h8N.png"
+    photo_url = "http://m5.paperblog.com/i/85/859662/where-did-my-profile-picture-go-in-google-sea-L-Mi3h8N.png"
+    open(photo_url, "rb") do |file|
+      book.author.photo = file
+    end
     book.author.save
     book.author = book.author
 

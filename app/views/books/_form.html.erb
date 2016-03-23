@@ -25,17 +25,17 @@
   <%= f.label :price, class: "mdl-textfield__label" %>
 </div>
 
-<div class="mdl-textfield mdl-js-textfield">
-  <%= f.text_field :photo_url, class: "mdl-textfield__input" %>
-  <% if @book.errors[:photo_url].any? %>
-    <span class="error-text">* <%= @book.errors[:photo_url].join(", ") %> </span>
+<div class="">
+  <%= f.label :photo, {class: "mdl-selectfield__select", style: "color: #BDBDBD;"}%>
+  <%= f.attachment_field :photo, class: "" %>
+  <% if @book.errors[:photo].any? %>
+    <span class="mdl-textfield__error">* <%= @book.errors[:photo].join(", ") %> </span>
   <% end %>
-  <%= f.label :photo_url, class: "mdl-textfield__label" %>
 </div>
 
 <div class="mdl-textfield mdl-js-textfield">
   <%= f.label :author_id, {class: "mdl-selectfield__select", style: "color: #BDBDBD;"} %>
-  <%= f.collection_select :author_id, Author.all, :id, :full_name, {prompt: true}, {class: "option"}%>
+  <%= f.collection_select :author_id, Author.all.order("last_name asc"), :id, :full_name, {prompt: true}, {class: "option"}%>
 </div>
 
 <div>

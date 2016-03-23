@@ -12,7 +12,7 @@
             </div>
           </div>
           <div class="mdl-card__supporting-text">
-            <%= link_to author.bio, author_path(id: author.id), style: "text-decoration: none; color: #212121;"%>
+            <%= link_to author.bio.truncate(150), author_path(id: author.id), style: "text-decoration: none; color: #212121;"%>
           </div>
           <div class="mdl-card__actions mdl-card--border">
             <small style="padding-left: 10px;">
