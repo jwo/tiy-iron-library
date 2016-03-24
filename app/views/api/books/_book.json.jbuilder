@@ -1,6 +1,7 @@
 json.id book.id
 json.title book.title
 json.price book.price
+json.photo_url book.photo_url
 json.author do
   json.id book.author.id
   json.first_name book.author.first_name

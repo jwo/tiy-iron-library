@@ -1,10 +1,12 @@
 class Api::BooksController < ApplicationController
+  require 'open-uri'
+
   def index
     @books = Book.all.order("title asc")
   end
 
   def show
-    @book = Book.find_by(id: params[:id])
+    @book = Book.find_by id: params[:id]
   end
 
   def create
@@ -25,7 +27,7 @@ class Api::BooksController < ApplicationController
   end
 
   def update
-    @book = Book.find_by(id: params[:id])
+    @book = Book.find_by id: params[:id]
 
     url = params[:book][:photo_url]
     if url.present?
@@ -42,7 +44,7 @@ class Api::BooksController < ApplicationController
   end
 
   def destroy
-    @book = Book.find_by(id: params[:id])
+    @book = Book.find_by id: params[:id]
     @book.destroy
     head :ok
   end
@@ -52,6 +54,6 @@ class Api::BooksController < ApplicationController
   end
 
   def book_params
-    params.require(:books).permit(:title, :photo, :price, :author_id)
+    params.require(:book).permit(:title, :photo, :price, :author_id)
   end
 end
