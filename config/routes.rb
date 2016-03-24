@@ -7,20 +7,14 @@ Rails.application.routes.draw do
   post 'sign_up' => 'user#create', as: :users
 
   root 'books#index'
-  get 'books/new' => 'books#new', as: :new_book
-  get 'books/:id' => 'books#show', as: :book
-  post 'books' => 'books#create'
-  get 'books/:id/edit' => 'books#edit', as: :edit_book
-  patch 'books/:id' => 'books#update'
-  delete 'books/:id' => 'books#delete'
+  resources :books
 
-  get 'authors' => 'authors#index', as: :authors
-  get 'authors/new' => 'authors#new', as: :new_author
-  get 'authors/:id' => 'authors#show', as: :author
-  post 'authors' => 'authors#create'
-  get 'authors/:id/edit' => 'authors#edit', as: :edit_author
-  patch 'authors/:id' => 'authors#update'
-  delete 'authors/:id' => 'authors#delete'
+  resources :authors
+
+  namespace :api do
+    resources :books
+    resources :authors
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
