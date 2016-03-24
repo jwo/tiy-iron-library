@@ -43,7 +43,7 @@ class BooksController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
     @book = Book.find_by id: params[:id]
     @book.destroy
     redirect_to root_path
