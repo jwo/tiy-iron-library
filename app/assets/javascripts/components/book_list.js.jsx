@@ -46,15 +46,6 @@ var BookList = React.createClass({
 
           {this.state.books.map(function(book){
 
-            var mdlCellStyle = {
-              minWidth: 100 + '%'
-            };
-
-            var demoCardSquareStyle = {
-              maxWidth: 100 + '%',
-              justifyContent: 'center'
-            };
-
             var mdlCardTileStyle = {
               background: "url('" + book.photo_url + "')",
               backgroundPosition: 'top',
@@ -63,18 +54,9 @@ var BookList = React.createClass({
               minWidth: 100 + '%'
             };
 
-            var mdlCardStyle = {
-              textDecoration: 'none',
-              color: '#212121'
-            };
-
-            var smallStyle = {
-              paddingLeft: '10px'
-            };
-
             return <div key={book.id}>
-              <div className="mdl-cell mdl-cell--4-col mdl-cell--6-col-tablet" style={mdlCellStyle}>
-                <div className="demo-card-square mdl-card mdl-shadow--2dp" style={demoCardSquareStyle}>
+              <div className="mdl-cell mdl-cell--4-col mdl-cell--6-col-tablet">
+                <div className="demo-card-square mdl-card mdl-shadow--2dp">
                   <div className="mdl-card__title mdl-card--expand" style={mdlCardTileStyle}>
                     <div className="go-to-button">
                       <a href={book.book_url} className="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect">
@@ -83,10 +65,10 @@ var BookList = React.createClass({
                     </div>
                   </div>
                   <div className="mdl-card__supporting-text">
-                    <a href="{book.book_url}" style={mdlCardStyle}>{book.title}</a>
+                    <a href="{book.book_url}">{book.title}</a>
                   </div>
                   <div className="mdl-card__actions mdl-card--border">
-                    <small style={smallStyle}>
+                    <small>
                       {'$' + book.price.toFixed(2)}
                     </small>
                     <a href={book.book_url} className="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">{book.author.full_name}</a>

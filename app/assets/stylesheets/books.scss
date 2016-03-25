@@ -9,7 +9,6 @@
 }
 .demo-card-square.mdl-card {
   width: 320px;
-  // height: 480px;
   margin: 20px;
 }
 .item-list {
@@ -27,4 +26,26 @@
 }
 .mdl-card--expand {
   min-height: 320px;
+}
+
+.mdl-cell {
+  min-width: 100%;
+}
+
+.demo-card-square {
+  max-width: 100%;
+  justify-content: center;
+}
+
+.mdl-card__supporting-text {
+  a {
+    text-decoration: none;
+    color: #212121;
+  }
+}
+
+.mdl-card__actions {
+  small {
+    padding-left: 10px;
+  }
 }
