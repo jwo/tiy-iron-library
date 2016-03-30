@@ -1,0 +1,36 @@
+class CartsController < ApplicationController
+  def view
+    @order = Order.find_by status: 'cart', user_id: @current_user.id
+  end
+
+  def add_to_cart
+    @book = Book.find_by id: params[:book_id]
+
+    order = Order.find_by status: 'cart', user_id: @current_user.id
+    if order.nil?
+      order = Order.new
+      order.user = @current_user
+      order.purchased_at = Time.now
+      order.save!
+    end
+
+    order_item = OrderItem.find_by order_id: order.id, book_id: @book.id
+    if order_item.present?
+      order_item.quantity += 1
+    else
+      order_item = OrderItem.new
+      order_item.order = order
+      order_item.book = @book
+      order_item.price = @book.price
+      order_item.shipping_cost = @book.shipping_cost
+      order_item.quantity = 1
+    end
+    order_item.save!
+
+    redirect_to cart_path
+  end
+
+  def remove_from_cart
+    @book = Book.find_by id: params[:book_id]
+  end
+end
