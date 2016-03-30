@@ -44,6 +44,8 @@ if Book.count == 0
   open(url, "rb") do |file|
     book.photo = file
   end
+  book.inventory = 10
+  book.shipping_cost = book.price * 0.1
   book.save
 
   book = Book.new
@@ -54,6 +56,8 @@ if Book.count == 0
   open(url, "rb") do |file|
     book.photo = file
   end
+  book.inventory = 10
+  book.shipping_cost = book.price * 0.1
   book.save
 
   book = Book.new
@@ -64,6 +68,8 @@ if Book.count == 0
   open(url, "rb") do |file|
     book.photo = file
   end
+  book.inventory = 10
+  book.shipping_cost = book.price * 0.1
   book.save
 
   book = Book.new
@@ -74,6 +80,24 @@ if Book.count == 0
   open(url, "rb") do |file|
     book.photo = file
   end
+  book.inventory = 10
+  book.shipping_cost = book.price * 0.1
   book.save
+
+end
+
+if User.count == 0
+
+  user = User.new
+  user.name = "sally"
+  user.email = "sally@example.com"
+  user.password = "12345678"
+  user.save
+
+  user = User.new
+  user.name = "bob"
+  user.email = "bob@example.com"
+  user.password = "12345678"
+  user.save
 
 end
