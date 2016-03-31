@@ -31,6 +31,10 @@ class CartsController < ApplicationController
   end
 
   def remove_from_cart
+    @order = Order.find_by status: 'cart', user_id: @current_user.id
     @book = Book.find_by id: params[:book_id]
+    order_item = OrderItem.find_by order_id: @order.id, book_id: @book.id
+    order_item.destroy
+    redirect_to cart_path
   end
 end

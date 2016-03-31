@@ -129,6 +129,18 @@
   }
 }
 
+.cart {
+  .order-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .checkout {
+    float: right;
+  }
+}
+
 @media screen and (max-width: 800px) {
   h1 {
     font-size: 36px;
@@ -145,5 +157,13 @@
   p {
     font-size: 12px;
     line-spacing: 1.2;
+  }
+  .cart {
+    .order-item {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+    } 
   }
 }

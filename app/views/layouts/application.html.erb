@@ -39,6 +39,12 @@
           &nbsp;
           <% if @current_user %>
             <%= link_to "Sign Out", sign_out_path %>
+            &nbsp;&nbsp;&nbsp;
+            <%= link_to cart_path do %>
+              <div class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
+                <i class="material-icons" style="font-size: 16px;">shopping_cart</i>
+              </div>
+            <% end %>
           <% else %>
             <%= link_to "Sign In", sign_in_path %>
           <% end %>

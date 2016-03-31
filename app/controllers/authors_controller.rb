@@ -34,7 +34,7 @@ class AuthorsController < ApplicationController
   end
 
   def update
-    @author = Author.new
+    @author = Author.find_by id: params[:id]
 
     if @author.update author_params
       redirect_to author_path
