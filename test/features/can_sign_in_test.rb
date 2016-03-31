@@ -3,7 +3,7 @@ require 'open-uri'
 
 class CanSignInTest < Capybara::Rails::TestCase
   setup do
-    User.create! name: "Bob", email: "bob@example.com", password: "12345678"
+    User.create! name: "bob", email: "bob@example.com", password: "12345678"
 
     author = Author.new
     author.first_name = "William"
@@ -23,12 +23,12 @@ class CanSignInTest < Capybara::Rails::TestCase
 
   test "Can sign in" do
     visit root_path
-    click_link "Hamlet"
+    click_link "Sign In"
     fill_in "Email", with: "bob@example.com"
     fill_in "Password", with: "12345678"
     click_button "Sign In"
 
-    assert_content page, "Bob"
+    assert_content page, "bob"
   end
 
 end
