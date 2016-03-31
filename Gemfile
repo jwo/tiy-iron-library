@@ -40,6 +40,8 @@ group :development, :test do
   gem 'minitest-rails'
   gem 'minitest-rails-capybara'
   gem 'launchy'
+  gem 'poltergeist'
+  gem 'pry'
 end
 
 group :development do
