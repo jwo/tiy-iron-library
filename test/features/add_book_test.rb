@@ -7,7 +7,7 @@ class AddBookTest < Capybara::Rails::TestCase
     User.create! name: "Bob", email: "bob@example.com", password: "12345678"
   end
 
-  test "Add Book" do
+  scenario "Add Book", js: true do
     visit root_path
     within "header" do
       first(:link, "add").click
