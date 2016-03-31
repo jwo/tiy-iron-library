@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'checkout/start'
+
+  get 'checkout/receipt'
+
+  get 'carts/view'
+
   get 'sign_in' => 'session#new', as: :sign_in
   post 'sign_in' => 'session#create'
   get 'sign_out' => 'session#delete', as: :sign_out
@@ -15,6 +21,12 @@ Rails.application.routes.draw do
     resources :books
     resources :authors
   end
+
+  get 'cart' => 'carts#view', as: :cart
+  post 'cart' => 'carts#add_to_cart', as: :add_to_cart
+  delete 'cart' => 'carts#remove_from_cart', as: :remove_from_cart
+  post 'checkout' => 'carts#process_payment', as: :process_payment
+  get 'receipt/:id' => 'carts#receipt', as: :receipt
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

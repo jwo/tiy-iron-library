@@ -1,0 +1,48 @@
+<div class="cart">
+  <div class="demo-container mdl-grid">
+    <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
+    <div class="demo-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
+      <h3><%= @current_user.name %>'s cart</h3>
+      <% if @order %>
+        <% @order.order_items.each do |order_item| %>
+          <hr>
+          <div class="order-item">
+            <div><%= image_tag attachment_url(order_item.book, :photo, :fill, 100, 150, format: "jpg") %></div>
+            <ul>
+              <li>Title: <%= order_item.book.title %></li>
+              <li>Quantity: <%= order_item.quantity %></li>
+              <li>Total Price: <%= number_to_currency order_item.total_price %></li>
+            </ul>
+            <div class="order-img-btn">
+              <%= link_to 'Remove from Cart', remove_from_cart_path(book_id: order_item.book_id), class: 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect', method: :delete %>
+            </div>
+          </div>
+        <% end %>
+        <hr>
+        <h5 style="text-align: right;">Order Total: <%= number_to_currency @order.total_price %></h5>
+        <div class="checkout">
+          <% if @order.order_items.present? %>
+            <%= form_tag process_payment_path, method: :post, id: "payment-form" do %>
+
+              <script
+                src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                data-key="pk_test_5JVSPhieKsIPIFTadSnKl3vs"
+                data-name="The Iron Library"
+                data-description="<%= @order.description %>"
+                data-amount="<%= @order.total_price_in_cents %>"
+                data-email="<%= @current_user.email %>"
+                data-shipping-address="true"
+                data-locale="auto">
+              </script>
+
+          <% end %>
+          <% else %>
+            <%= link_to 'Keep Shopping', root_path, class: 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent' %>
+          <% end %>
+        </div>
+        <% else %>
+        <%= link_to 'Keep Shopping', root_path, class: 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent' %>
+      <% end %>
+    </div>
+  </div>
+</div>

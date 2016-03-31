@@ -1,14 +1,14 @@
 <div class="demo-container mdl-grid">
   <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
   <div class="demo-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
-      <h1>
+      <h4>
         <div class="delete-button">
           <%= link_to book_path(id: @book.id), class: "mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored", method: :delete, data: {confirm: "Are you sure you want to delete?"} do %>
             <i class="material-icons">delete</i>
           <% end %>
+          Edit Book
         </div>
-        Edit Book
-      </h1>
+      </h4>
 
       <%= render 'form' %>
   </div>

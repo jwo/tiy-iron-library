@@ -1,5 +1,8 @@
-@import 'books';
 @import 'authors';
+@import 'books';
+@import 'carts';
+@import 'session';
+@import 'user';
 
 .demo-ribbon {
   width: 100%;
@@ -29,16 +32,12 @@
 
 .demo-content {
   border-radius: 2px;
-  padding: 80px 56px;
+  padding: 56px;
   margin-bottom: 80px;
 }
 
 .demo-layout.is-small-screen .demo-content {
   padding: 40px 28px;
-}
-
-.demo-content h3 {
-  margin-top: 48px;
 }
 
 .demo-footer {
@@ -49,14 +48,6 @@
   font-size: 13px;
 }
 
-.recipe-list {
-  display: flex;
-  h2 {
-    background: rgba(#111111, 0.6);
-    color: #eeeeee;
-    padding: 3px 12px;
-  }
-}
 .error-text {
   color: #F44235;
   font-weight: bold;
@@ -67,4 +58,123 @@
 .error-text {
   color: #F44235;
   font-weight: bold;
+}
+
+.index {
+  .mdl-card--expand {
+    min-height: 320px;
+  }
+  .go-to-button {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+  }
+
+  .item-list {
+    display: flex;
+    .mdl-grid {
+      display: flex;
+      justify-content: center;
+      .mdl-cell {
+        width: 320px;
+        display: flex;
+        justify-content: center;
+      }
+      .demo-card-square {
+        width: 320px;
+        margin: 20px;
+        display: flex;
+        justify-content: center;
+        .mdl-card__supporting-text {
+          a {
+            text-decoration: none;
+            color: #212121;
+          }
+        }
+
+        .mdl-card__actions {
+          small {
+            padding-left: 10px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.show {
+  .demo-card {
+    max-width: 90%;
+    display: block;
+    justify-content: center;
+    margin: 0 auto;
+    .mdl-cell {
+      width: 70%;
+      margin: 0 auto;
+      margin-bottom: 20px;
+      .photo {
+        display: flex;
+        justify-content: center;
+        img {
+          max-width: 100%;
+        }
+      }
+    }
+  }
+  .price {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    h4 {
+      text-align: center;
+    }
+  }
+}
+
+.cart {
+  .order-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .checkout {
+    float: right;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  h1 {
+    font-size: 36px;
+  }
+  h2 {
+    font-size: 30px;
+  }
+  h3 {
+    font-size: 24px;
+  }
+  h4 {
+    font-size: 18px;
+  }
+  p {
+    font-size: 12px;
+    line-spacing: 1.2;
+  }
+  .cart {
+    .order-item {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+  .show {
+    .demo-card {
+      max-width: 95%;
+      .mdl-cell {
+        width: 90%;
+      }
+    }
+  }
 }

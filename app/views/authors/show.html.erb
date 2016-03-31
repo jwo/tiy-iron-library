@@ -1,23 +1,26 @@
-<div class="demo-card mdl-grid">
-  <div class="demo-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--6-col">
-    <h1>
-      <%= link_to edit_author_path(id: @author.id), class: "mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored" do %>
-        <i class="material-icons">edit</i>
-      <% end %>
-      <%= @author.full_name %>
-    </h1>
-    <h1>
-        <%= image_tag @author.photo_url, style:"width: 100%" %>
-    </h1>
+<div class="show">
+  <div class="demo-card mdl-grid">
+    <div class="demo-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--6-col">
+      <h4>
+        <%= link_to edit_author_path(id: @author.id), class: "mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored" do %>
+          <i class="material-icons">edit</i>
+        <% end %>
+        <%= @author.full_name %>
+      </h4>
 
-  </div>
-  <div class="demo-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--6-col">
-    <p><%= @author.bio %></p>
-    <p class="" style="text-decoration: underline;"><br>Works</p>
-    <ul>
-      <% @author.books.each do |book| %>
-        <li><%= link_to book.title, book_path(id: book.id), style:"text-decoration: none; color: #424242;" %><small> (<%= number_to_currency(book.price) %>)</small></li>
-      <% end %>
-    </ul>
+      <div class="photo">
+        <%= image_tag @author.photo_url %>
+      </div>
+
+    </div>
+    <div class="demo-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--6-col">
+      <p><%= @author.bio %></p>
+      <p class="" style="text-decoration: underline;"><br>Works</p>
+      <ul>
+        <% @author.books.each do |book| %>
+          <li><%= link_to book.title, book_path(id: book.id), style:"text-decoration: none; color: #424242;" %><small> (<%= number_to_currency(book.price) %>)</small></li>
+        <% end %>
+      </ul>
+    </div>
   </div>
 </div>

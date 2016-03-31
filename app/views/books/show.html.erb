@@ -1,19 +1,25 @@
-<div class="demo-card mdl-grid">
-  <div class="demo-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--6-col">
-    <h1>
-      <%= link_to edit_book_path(id: @book.id), class: "mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored" do %>
-        <i class="material-icons">edit</i>
-      <% end %>
-      <%= @book.title %>
-    </h1>
-    <h1>
-      <%= image_tag @book.photo_url, style:"width: 60%" %>
-      <small style="padding-left: 50px;"><%= number_to_currency(@book.price) %></small>
-    </h1>
-
-  </div>
-  <div class="demo-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--6-col">
-    <h2><%= link_to @book.author.full_name, author_path(id: @book.author_id) %></h2>
-    <p><%= @book.author.bio %></p>
+<div class="show">
+  <div class="demo-card mdl-grid">
+    <div class="demo-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--6-col">
+      <h4>
+        <%= link_to edit_book_path(id: @book.id), class: "mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored" do %>
+          <i class="material-icons">edit</i>
+        <% end %>
+        <%= @book.title %>
+      </h4>
+      <div class="photo">
+        <%= image_tag @book.photo_url %>
+      </div>
+      <div class="price">
+        <h4>
+          <%= number_to_currency(@book.price) %>
+        </h4>
+        <%= link_to 'Add to Cart', add_to_cart_path(book_id: @book.id), class: 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect', method: :post %>
+      </div>
+    </div>
+    <div class="demo-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--6-col">
+      <h4><%= link_to @book.author.full_name, author_path(id: @book.author_id) %></h4>
+      <p><%= @book.author.bio %></p>
+    </div>
   </div>
 </div>
