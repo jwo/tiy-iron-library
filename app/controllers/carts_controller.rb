@@ -58,6 +58,8 @@ class CartsController < ApplicationController
   end
 
   def receipt
-    @order = Order.find_by! id: params[:id], user_id: @current_user.id
+    @order = Order.find_by id: params[:id]
+
+    ReceiptMailer.send_receipt(@order, @current_user).deliver_now
   end
 end
