@@ -31,6 +31,7 @@ task :scrape => :environment do
     book = Book.where(title: the_title).first_or_initialize
     book.title = the_title
     book.price = amazon_book.search('.zg_price .price').text.split('$')[1].to_s.to_f
+    book.inventory = 10
     photo_url = amazon_individual_page.search('.maintain-height img')[0]["data-a-dynamic-image"].to_s
     photo_url =photo_url.split('{"')[1].to_s
     photo_url = photo_url.split('"')[0].to_s
