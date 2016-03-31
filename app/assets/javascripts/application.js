@@ -12,6 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require es5-shim
+//= require promise
+//= require fetch
 //= require react
 //= require react_ujs
 //= require components
