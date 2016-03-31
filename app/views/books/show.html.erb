@@ -14,7 +14,14 @@
         <h4>
           <%= number_to_currency(@book.price) %>
         </h4>
-        <%= link_to 'Add to Cart', add_to_cart_path(book_id: @book.id), class: 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect', method: :post %>
+        <% if @book.inventory == 0 %>
+          <h4><small>OUT OF STOCK</small></h4>
+        <% else %>
+          <% if @book.inventory == 1 %>
+            <h4><small>Hurry! Only 1 left in stock.</small></h4>
+          <% end %>
+          <%= link_to 'Add to Cart', add_to_cart_path(book_id: @book.id), class: 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect', method: :post %>
+        <% end %>
       </div>
     </div>
     <div class="demo-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--6-col">

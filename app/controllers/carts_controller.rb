@@ -25,7 +25,12 @@ class CartsController < ApplicationController
       order_item.shipping_cost = @book.shipping_cost
       order_item.quantity = 1
     end
-    order_item.save!
+
+    if order_item.quantity <= @book.inventory
+      @book.inventory -= order_item.quantity
+      @book.save
+      order_item.save!
+    end
 
     redirect_to cart_path
   end
@@ -34,6 +39,8 @@ class CartsController < ApplicationController
     @order = Order.find_by status: 'cart', user_id: @current_user.id
     @book = Book.find_by id: params[:book_id]
     order_item = OrderItem.find_by order_id: @order.id, book_id: @book.id
+    @book.inventory += order_item.quantity
+    @book.save
     order_item.destroy
     redirect_to cart_path
   end
