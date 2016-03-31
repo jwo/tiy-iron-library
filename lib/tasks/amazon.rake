@@ -11,7 +11,7 @@ task :scrape => :environment do
 
   page = agent.get('http://www.amazon.com/gp/bestsellers/2016/books/')
 
-  page.search('.zg_itemImmersion').take(20).each do |amazon_book|
+  page.search('.zg_itemImmersion').take(10).each do |amazon_book|
 
     next if amazon_book.search('.zg_itemImageImmersion a')[0].blank?
 
