@@ -9,7 +9,7 @@ task :scrape => :environment do
 
   agent = Mechanize.new
 
-  page = agent.get('http://www.amazon.com/gp/bestsellers/2016/books/')
+  page = agent.get('http://www.amazon.com/gp/bestsellers/2014/books/')
 
   page.search('.zg_itemImmersion').take(10).each do |amazon_book|
 
