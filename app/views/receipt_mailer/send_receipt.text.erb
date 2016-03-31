@@ -1,0 +1,18 @@
+Hi <%= @current_user %>
+Thank you for your order!
+<% if @order %>
+  <%=@order.description %>
+
+
+  <% @order.order_items.each do |order_item| %>
+    Title: <%= order_item.book.title %>
+    Quantity: <%= order_item.quantity %>
+    Total Price: <%= number_to_currency order_item.total_price %>
+  <% end %>
+
+Order Total: <%= number_to_currency @order.total_price %>
+<% end %>
+
+------
+Best!
+The Iron Library
