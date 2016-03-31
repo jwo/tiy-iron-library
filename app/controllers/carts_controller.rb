@@ -37,4 +37,27 @@ class CartsController < ApplicationController
     order_item.destroy
     redirect_to cart_path
   end
+
+  def process_payment
+    @order = Order.find_by status: 'cart', user_id: @current_user.id
+
+    card_token = params[:stripeToken]
+
+    Stripe.api_key = "sk_test_wHzmUvlgjN7NWOsoIRsR2sJT"
+
+    Stripe::Charge.create(
+      :amount => @order.total_price_in_cents,
+      :currency => "usd",
+      :source => card_token,
+      :description => @order.description
+    )
+
+    @order.update status: 'pending'
+
+    redirect_to receipt_path(id: @order.id)
+  end
+
+  def receipt
+    @order = Order.find_by! id: params[:id], user_id: @current_user.id
+  end
 end

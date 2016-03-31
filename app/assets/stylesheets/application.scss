@@ -1,5 +1,8 @@
-@import 'books';
 @import 'authors';
+@import 'books';
+@import 'carts';
+@import 'session';
+@import 'user';
 
 .demo-ribbon {
   width: 100%;
@@ -164,6 +167,14 @@
       flex-direction: column;
       justify-content: space-between;
       align-items: center;
-    } 
+    }
+  }
+  .show {
+    .demo-card {
+      max-width: 95%;
+      .mdl-cell {
+        width: 90%;
+      }
+    }
   }
 }

@@ -9,6 +9,16 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+
+  <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+  <script type="text/javascript" src=" https://checkout.stripe.com/checkout.js"></script>
+
+
+
+  <script type="text/javascript">
+    Stripe.setPublishableKey('pk_test_5JVSPhieKsIPIFTadSnKl3vs');
+  </script>
+
 </head>
 <body>
 
@@ -16,14 +26,16 @@
     <div class="demo-layout mdl-layout mdl-layout--fixed-header mdl-js-layout mdl-color--grey-100 is-upgraded">
       <header class="demo-header mdl-layout__header mdl-layout__header--scroll mdl-color--grey-100 mdl-color-text--grey-800">
         <div class="mdl-layout__header-row">
-          <%= link_to new_book_path, class: "mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored" do %>
+          <%= link_to new_book_path, class: "mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored" do %>
             <i class="material-icons">add</i>
           <% end %>
-          <div class="mdl-layout-spacer"><%= link_to "Books", root_path, class: "mdl-layout-title", style: "padding-left: 20px;" %></div>
-          <%= link_to new_author_path, class: "mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored" do %>
+          &nbsp;&nbsp;&nbsp;
+          <div class="mdl-layout-spacer"><%= link_to "Books", root_path %></div>
+          <%= link_to new_author_path, class: "mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored" do %>
             <i class="material-icons">add</i>
           <% end %>
-          <div class="mdl-layout-spacer"><%= link_to "Authors", authors_path, class: "mdl-layout-title", style: "padding-left: 20px;" %></div>
+          &nbsp;&nbsp;&nbsp;
+          <div class="mdl-layout-spacer"><%= link_to "Authors", authors_path %></div>
           <div data-upgraded=",MaterialTextfield" class="mdl-textfield mdl-js-textfield mdl-textfield--expandable is-upgraded">
             <label data-upgraded=",MaterialButton" class="mdl-button mdl-js-button mdl-button--icon" for="search">
               <i class="material-icons">search</i>
