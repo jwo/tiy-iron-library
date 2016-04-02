@@ -37,7 +37,7 @@
           <% end %>
           &nbsp;&nbsp;&nbsp;
           <div class="mdl-layout-spacer"><%= link_to "Authors", authors_path %></div>
-          <div data-upgraded=",MaterialTextfield" class="mdl-textfield mdl-js-textfield mdl-textfield--expandable is-upgraded">
+          <!-- <div data-upgraded=",MaterialTextfield" class="mdl-textfield mdl-js-textfield mdl-textfield--expandable is-upgraded">
             <label data-upgraded=",MaterialButton" class="mdl-button mdl-js-button mdl-button--icon" for="search">
               <i class="material-icons">search</i>
             </label>
@@ -45,9 +45,11 @@
               <input class="mdl-textfield__input" id="search" type="text">
               <label class="mdl-textfield__label" for="search">Enter your query...</label>
             </div>
-          </div>
+          </div> -->
           <% if @current_user %>
-            Hello <%= @current_user.name %>!
+            <div class="user-name">
+              Hello <%= @current_user.name %>!              
+            </div>
           <% end %>
           &nbsp;
           <% if @current_user %>
